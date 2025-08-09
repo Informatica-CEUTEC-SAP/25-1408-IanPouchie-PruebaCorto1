@@ -14,12 +14,13 @@ public class GestorTareas {
 
     public void listarTareas() {
         if (listaTareas.isEmpty()) {
-            System.out.println("No hay tareas para mostrar.");
+            System.out.println("No tienes tareas registradas.");
             return;
         }
         for (int i = 0; i < listaTareas.size(); i++) {
             System.out.println("Tarea #" + (i + 1));
             listaTareas.get(i).mostrarInfo();
+            System.out.println("-------------------------");
         }
     }
 
@@ -29,6 +30,7 @@ public class GestorTareas {
             if (listaTareas.get(i).isCompletada() == completadas) {
                 System.out.println("Tarea #" + (i + 1));
                 listaTareas.get(i).mostrarInfo();
+                System.out.println("-------------------------");
                 hay = true;
             }
         }
@@ -42,7 +44,7 @@ public class GestorTareas {
             listaTareas.get(indice).marcarComoCompletada();
             System.out.println("Tarea marcada como completada.");
         } else {
-            System.out.println("Índice inválido.");
+            System.out.println("Índice inválido. Por favor, verifica el número de tarea.");
         }
     }
 
@@ -51,7 +53,7 @@ public class GestorTareas {
             listaTareas.get(indice).editarTarea(descripcion, fechaLimite, prioridad, categoria);
             System.out.println("Tarea editada exitosamente.");
         } else {
-            System.out.println("Índice inválido.");
+            System.out.println("Índice inválido. Por favor, verifica el número de tarea.");
         }
     }
 
@@ -60,7 +62,12 @@ public class GestorTareas {
             listaTareas.remove(indice);
             System.out.println("Tarea eliminada exitosamente.");
         } else {
-            System.out.println("Índice inválido.");
+            System.out.println("Índice inválido. Por favor, verifica el número de tarea.");
         }
+    }
+
+    // Si quieres acceder a la lista (para validaciones externas)
+    public ArrayList<Tarea> getListaTareas() {
+        return listaTareas;
     }
 }
